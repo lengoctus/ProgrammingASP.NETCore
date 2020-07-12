@@ -1,0 +1,25 @@
+﻿@model List<CategoryView>
+
+<div class="hero__categories">
+    <div class="hero__categories__all">
+        <i class="fa fa-bars"></i>
+        <span>All departments</span>
+    </div>
+    <ul class="menuCate">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <li>
+                    <a href="#">@item.Name</a>
+                    <ul class="menuCate_dropdown">
+                        @foreach (var itemSub in item.SubCategoryView)
+                        {
+                            <li><a href="./shop-details.html">@itemSub.Name</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+        }
+    </ul>
+</div>

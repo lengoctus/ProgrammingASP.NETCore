@@ -1,0 +1,100 @@
+﻿@model List<AccountView>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Account Manager</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Account Manager</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10"></div>
+                                <div class="col-md-2">
+                                    <a role="button" asp-area="Admin" asp-controller="AdminAccount" asp-action="Create" class="form-control btn btn-success">Add Employee</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped" id="tableCate">
+                                        <thead>
+                                            <tr style="text-align: center">
+                                                <th>
+                                                    <input type="checkbox" id="AllCbAccount" />
+                                                </th>
+                                                <th>Image</th>
+                                                <th>Employee Code</th>
+                                                <th>FullName</th>
+                                                <th>Email</th>
+                                                <th>Active</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model != null)
+                                            {
+                                                foreach (var item in Model)
+                                                {
+                                                    <tr style="text-align: center">
+                                                        <td>
+                                                            <input type="checkbox" value="@item.Id" class="cbAcc" />
+                                                        </td>
+                                                        <td>
+                                                            <img src="~/Admin/images/Account/@item.Image" width="80" height="80" />
+                                                        </td>
+                                                        <td>@item.Code</td>
+                                                        <td>@item.FullName</td>
+                                                        <td>@item.Email</td>
+                                                        <td>
+                                                            <input type="checkbox" value="@item.Id" checked="@item.Active" class="cbActive" />
+                                                        </td>
+                                                        <td>
+                                                            <a asp-route-AccId="@item.Id" asp-area="Admin" asp-controller="AdminAccount" asp-action="Edit" role="button" class="btn btn-primary">
+                                                                <i class="fas fa-user-edit"></i>&nbsp; Edit
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-danger btnRemove"><i class="fas fa-trash"></i> &nbsp; Remove</button>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+</section>
+

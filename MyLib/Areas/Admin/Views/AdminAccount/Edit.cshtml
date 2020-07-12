@@ -1,0 +1,80 @@
+﻿@model AccountView
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@section AdminScript{
+
+    @if (ViewBag.result != null && ViewBag.result == true)
+    {
+        <script>
+            alertSuccess_OnClose_ReplaceUrl("Update Employee Success", "/admin/account/index");
+            
+        </script>
+    }
+    else if (ViewBag.result != null && ViewBag.result == false)
+    {
+        <script>
+            alertError('Update Employee fail. Check again!!');
+        </script>
+    }
+}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit Employee</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="AdminAccount" asp-action="Index">Account</a></li>
+                    <li class="breadcrumb-item active">Edit</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <form asp-area="Admin" asp-controller="AdminAccount" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="~/Admin/images/Account/@Model.Image" width="300" height="300" id="photoImg" />
+                    <input type="file" value="Choose Image" class="form-control" name="photo" onchange="ChangeImg()" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <div class="f-createEmp">
+                        <label for="fullname">Code:</label>
+                        <input type="text" id="code" asp-for="Code" placeholder="Employee Code" class="form-control" readonly />
+                        <input type="hidden" asp-for="Id" />
+                    </div>
+
+                    <div class="f-createEmp">
+                        <label for="fullname">FullName:</label>
+                        <input type="text" id="fullname" asp-for="FullName" placeholder="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="f-createEmp">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" asp-for="Email" placeholder="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <input type="submit" class="form-control btn btn-warning" value="Update" />
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </form>
+    </div>
+</section>
+
+

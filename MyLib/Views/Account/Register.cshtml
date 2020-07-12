@@ -1,0 +1,47 @@
+﻿@model AccountView
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container contain-login" style="margin-top:3%; margin-bottom:10%; border-top: 2px ridge; padding-top: 4%">
+    <form asp-controller="Account" asp-action="Register" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-3">
+                <img src="~/Admin/images/Account/default.jpg" width="200" height="200"  alt="Alternate Text" />
+                <input type="file" class="form-control" name="cusPhoto" value="Choose File" />
+            </div>
+            <div class="col-md-6">
+                <h3 style="text-align:center">Register Account</h3>
+
+                <div class="form-customer">
+                    <label for="email"><b>Email:</b></label>
+                    <input type="text" class="form-control" placeholder="Enter your Email" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-customer">
+                    <label for="Fullname"><b>FullName:</b></label>
+                    <input type="text" class="form-control" placeholder="Enter your FullName" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-customer">
+                    <label for="password"><b>Password:</b></label>
+                    <input type="password" class="form-control" placeholder="Enter your Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-customer">
+                    <label for="confirmpassword"><b>Confirm Password:</b></label>
+                    <input type="password" class="form-control" placeholder="Enter Confirm Password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-customer" style="margin-top:7%">
+                    <input type="submit" class="form-control btn btn-success" value="Register" />
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </form>
+</div>

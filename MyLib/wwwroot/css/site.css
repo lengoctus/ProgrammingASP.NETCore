@@ -1,0 +1,24 @@
+﻿.hero__categories .menuCate li {
+    position: relative
+}
+
+    .hero__categories .menuCate li .menuCate_dropdown {
+        opacity: 0;
+        visibility: hidden;
+        background: rgba(135, 236, 230, 0.68);
+        position: absolute;
+        transition: all, 0.3s;
+        left: 230px;
+        z-index: 9;
+        width: 180px;
+        top: 1px
+    }
+
+    .hero__categories .menuCate li:hover .menuCate_dropdown {
+        opacity: 1;
+        visibility: visible;
+    }
+
+.form-customer {
+    margin-bottom: 2%;
+}
